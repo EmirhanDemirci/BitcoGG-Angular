@@ -15,22 +15,22 @@ export class RegistrationComponent implements OnInit {
     this.service.formModel.reset();
   }
 
-  onSubmit(){
+  onSubmit() {
     this.service.register().subscribe(
-      (res:any) =>{
-        if(res.succeeded){
+      (res: any) => {
+        if (res.succeeded) {
           this.service.formModel.reset();
           this.toastr.success('New user created', 'Registration successful');
-        }else{
+        } else {
           res.errors.forEach(element => {
             switch (element.code) {
               case 'DuplicateUserName':
-                //Username is already taken
+                // Username is already taken
                 this.toastr.error('Username is already taken', 'Registration failed');
                 break;
-                
+
               default:
-                //Registration is failed.
+                // Registration is failed.
                 this.toastr.error(element.description, 'Registration failed');
                 break;
             }
@@ -40,7 +40,7 @@ export class RegistrationComponent implements OnInit {
       err => {
         console.log(err);
       }
-    )
+    );
   }
 
 }
