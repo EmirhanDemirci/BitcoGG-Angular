@@ -13,7 +13,6 @@ import { UserService } from './shared/user.service';
 import { LoginComponent } from './user/login/login.component';
 import { HomeComponent } from './home/home.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
-import { coinService } from './shared/coin.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +33,7 @@ import { coinService } from './shared/coin.service';
     }),
     FormsModule
   ],
-  providers: [UserService, coinService, {
+  providers: [UserService, {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true

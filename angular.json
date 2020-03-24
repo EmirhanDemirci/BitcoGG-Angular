@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "CGI-Angular": {
@@ -120,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "CGI-Angular"
+    }
+  },
+  "defaultProject": "CGI-Angular",
+  "cli": {
+    "analytics": "daff5f5f-c147-4189-b98c-86c1ad47ecc9"
+  }
 }

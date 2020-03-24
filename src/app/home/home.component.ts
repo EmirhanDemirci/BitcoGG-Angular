@@ -4,8 +4,7 @@ import { UserService } from '../shared/user.service';
 import { Injectable} from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Coins } from '../classes/coins';
-import { coinService } from '../shared/coin.service';
+// import { coinService } from '../shared/coin.service';
 
 
 @Component({
@@ -15,7 +14,7 @@ import { coinService } from '../shared/coin.service';
 })
 export class HomeComponent implements OnInit {
 userDetails;
-  constructor(private router: Router,private service:UserService, private httpclient: HttpClient, private _coinService: coinService) { }
+  constructor(private router: Router,private service:UserService, private httpclient: HttpClient) { }
 
   ngOnInit() {
     this.service.getUserProfile().subscribe(
@@ -26,20 +25,7 @@ userDetails;
         console.log(err);
       },
     );
-    this._coinService.getCoins().subscribe(
-      data=>
-      {
-        this.coins = data;
-      }
-    )
   }
-
-coins:Coins[];
-
- 
-
-
-
   onLogout(){
     // Delete the token (Logout)
     localStorage.removeItem('token');
