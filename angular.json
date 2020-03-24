@@ -1,9 +1,9 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1,
+  "version": 1, 
   "newProjectRoot": "projects",
   "projects": {
-    "BitcoGG-Angular": {
+    "CGI-Angular": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/BitcoGG-Angular",
+            "outputPath": "dist/CGI-Angular",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -63,18 +63,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "BitcoGG-Angular:build"
+            "browserTarget": "CGI-Angular:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "BitcoGG-Angular:build:production"
+              "browserTarget": "CGI-Angular:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "BitcoGG-Angular:build"
+            "browserTarget": "CGI-Angular:build"
           }
         },
         "test": {
@@ -111,19 +111,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "BitcoGG-Angular:serve"
+            "devServerTarget": "CGI-Angular:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "BitcoGG-Angular:serve:production"
+              "devServerTarget": "CGI-Angular:serve:production"
             }
           }
         }
       }
-    }
-  },
-  "defaultProject": "BitcoGG-Angular",
-  "cli": {
-    "analytics": "39faf404-799b-4748-95d7-3d91218831c6"
-  }
+    }},
+  "defaultProject": "CGI-Angular"
 }

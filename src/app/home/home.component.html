@@ -1,0 +1,30 @@
+<nav class="navbar navbar-dark bg-dark">
+    <img src="../../../assets/img/bitcoin-shield-2-571822.png" class="navLogo"> 
+    <a href="" class="navbar-brand text-white">Currencies</a>
+    <button class="btn btn-danger my-2 my-sm-0" (click)="onLogout()">Logout</button>
+</nav>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Symbol</th>
+        <th>Maxsupply</th>
+    </tr>
+    <tr *ngFor="let coin of coins">
+        <td>{{coin.id}}</td>
+        <td>{{coin.name}}</td>
+        <td>{{coin.symbol}}</td>
+        <td>{{coin.max_supply}}</td>
+    </tr>
+
+</table>
+<!-- Get User Data -->
+
+<!-- <div class="card m-5" style="width: 18rem" *ngIf="userDetails">
+<ul class="list-group">
+<li class="list-group-item"><strong>Usename : </strong>{{userDetails.userName}}</li>
+<li class="list-group-item"><strong>fullName : </strong>{{userDetails.fullName}}</li>
+<li class="list-group-item"><strong>Email : </strong>{{userDetails.email}}</li>
+</ul>
+</div> -->

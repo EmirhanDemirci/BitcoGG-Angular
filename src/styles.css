@@ -1,11 +1,21 @@
 body{
-    background-color: #04c582;;
+    background-color: #280244;;
+}
+.LoginLogo{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+.navLogo{
+    display: block;
+    width: 3%;
 }
 
 input.form-control,input.form-control:focus{
-    background-color: #636b7b;
-    color: #fff;
-    border: 1px solid #636b7b;
+    background-color: #FFFF;
+    color: #280244;
+    border: 1px solid #280244;
 
 }
 
@@ -15,12 +25,12 @@ input.form-control:focus{
 
 button[type=submit].btn{
     border-radius: 20px;
-    background-color: #04c582;
+    background-color: #280244;
     color: #fff;
 }
 
 div.form-group label:not(.text-danger){
-    color: #545d6a;
+    color: #280244;
     font-weight: 700;
 }
 
@@ -46,7 +56,7 @@ div.form-group.required>label:first-child:after{
   .wrapped-div {
     -webkit-border-radius: 10px 10px 10px 10px;
     border-radius: 10px 10px 10px 10px;
-    background: #2e3137;
+    background: #3E3E3E;
     padding: 30px;
     width: 90%;
     max-width: 450px;
