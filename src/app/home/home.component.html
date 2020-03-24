@@ -3,20 +3,25 @@
     <a href="" class="navbar-brand text-white">Currencies</a>
     <button class="btn btn-danger my-2 my-sm-0" (click)="onLogout()">Logout</button>
 </nav>
-
-<table>
+<table class="table table-striped table-dark table-bordered">
     <tr>
-        <th>ID</th>
+        <th>#</th>
         <th>Name</th>
-        <th>Symbol</th>
-        <th>Maxsupply</th>
+        <th>Market Cap</th>
+        <th>Price</th>
+        <th>Volume 24h</th>
+        <th>Circulating supply</th>
+        <th>Change 24h</th>
     </tr>
-    <!-- <tr >
-        <td>{{coin.id}}</td>
+    <tr *ngFor="let coin of Data$">
+        <td>{{coin.cmc_rank}}</td>
         <td>{{coin.name}}</td>
-        <td>{{coin.symbol}}</td>
-        <td>{{coin.max_supply}}</td>
-    </tr> -->
+        <td>{{coin.quote.usd.market_cap}}</td>
+        <td>{{coin.quote.usd.price}}</td>
+        <td>{{coin.quote.usd.volume_24h}}</td>
+        <td>{{coin.circulating_supply}}</td>
+        <td>{{coin.quote.usd.percent_change_24h}}</td>
+    </tr>
 
 </table>
 <!-- Get User Data -->

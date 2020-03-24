@@ -4,6 +4,8 @@ import { UserService } from '../shared/user.service';
 import { Injectable} from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { RootObject, Datum } from '../classes/Coins';
+import { coinService } from '../shared/coin.service';
 // import { coinService } from '../shared/coin.service';
 
 
@@ -14,9 +16,24 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HomeComponent implements OnInit {
 userDetails;
-  constructor(private router: Router,private service:UserService, private httpclient: HttpClient) { }
+Data$: Datum[] = [];
+  constructor(private router: Router,private service:UserService, private coinService: coinService, private httpclient: HttpClient) { }
+
 
   ngOnInit() {
+
+
+    this.coinService.getCryptos()
+    .subscribe(
+      (res: RootObject) =>{
+        this.Data$ = res.data;
+        console.log(res);
+      },
+      err => {
+        console.log(err);
+      }
+    );
+
     this.service.getUserProfile().subscribe(
       res =>{ 
         this.userDetails = res;
