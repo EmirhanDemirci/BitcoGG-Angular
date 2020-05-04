@@ -3,6 +3,8 @@
     <a href="" class="navbar-brand text-white">Currencies</a>
     <button class="btn btn-danger my-2 my-sm-0" (click)="onLogout()">Logout</button>
 </nav>
+<div class="Coins">
+    
 <table class="table table-striped table-dark table-bordered">
     <tr>
         <th>#</th>
@@ -12,6 +14,7 @@
         <th>Volume 24h</th>
         <th>Circulating supply</th>
         <th>Change 24h</th>
+        <th>View</th>
     </tr>
     <tr *ngFor="let coin of Data$">
         <td>{{coin.cmc_rank}}</td>
@@ -21,15 +24,38 @@
         <td>{{coin.quote.usd.volume_24h}}</td>
         <td>{{coin.circulating_supply}}</td>
         <td>{{coin.quote.usd.percent_change_24h}}</td>
+        <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" (click)="getCoin(coin)">View</button></td>
     </tr>
 
 </table>
-<!-- Get User Data -->
 
-<!-- <div class="card m-5" style="width: 18rem" *ngIf="userDetails">
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{Coin.name}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card m-5" style="width: 18rem" *ngIf="userDetails">
 <ul class="list-group">
-<li class="list-group-item"><strong>Usename : </strong>{{userDetails.userName}}</li>
-<li class="list-group-item"><strong>fullName : </strong>{{userDetails.fullName}}</li>
+<li class="list-group-item"><strong>Username : </strong>{{userDetails.userName}}</li>
+<li class="list-group-item"><strong>FirstName : </strong>{{userDetails.firstName}}</li>
+<li class="list-group-item"><strong>LastName : </strong>{{userDetails.lastName}}</li>
 <li class="list-group-item"><strong>Email : </strong>{{userDetails.email}}</li>
 </ul>
-</div> -->
+</div>

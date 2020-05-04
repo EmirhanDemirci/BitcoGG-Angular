@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
  })
  export class coinService 
  {
-     cryptoUrl = 'https://localhost:44358/api/coins';
+     cryptoUrl = 'https://localhost:44378/api/coin';
         
      constructor(private _http: HttpClient) { }
 

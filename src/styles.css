@@ -11,6 +11,11 @@ body{
     display: block;
     width: 3%;
 }
+.Coins{
+    margin-top: 2%;
+    margin-left: 2%;
+    margin-right: 2%;
+}
 
 input.form-control,input.form-control:focus{
     background-color: #FFFF;

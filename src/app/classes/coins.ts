@@ -29,7 +29,7 @@
         usd: Usd;
     }
 
-    export class Datum {
+    export class Coin {
         id: number;
         name: string;
         symbol: string;
@@ -48,6 +48,6 @@
 
     export class RootObject {
         status: Status;
-        data: Datum[];
+        data: Coin[];
     }
 
