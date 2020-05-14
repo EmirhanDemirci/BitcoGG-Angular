@@ -14,6 +14,8 @@ import { LoginComponent } from './user/login/login.component';
 import { HomeComponent } from './home/home.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { RootObject } from './classes/Coins';
+import { ProfileComponent } from './profile/profile.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { RootObject } from './classes/Coins';
     UserComponent,
     RegistrationComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    ProfileComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

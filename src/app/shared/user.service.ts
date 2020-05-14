@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { AuthService } from '../auth/auth.service';
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private fb: FormBuilder, private http: HttpClient) { }
+  constructor(private fb: FormBuilder, private http: HttpClient, private authService: AuthService) { }
   readonly BaseURI = 'https://localhost:44378/api';
 
   formModel = this.fb.group({
@@ -46,7 +47,13 @@ export class UserService {
     return this.http.post(this.BaseURI + '/User/Login', formData);
   }
 
-  getUserProfile(){
-    return JSON.parse(localStorage.getItem('user'));
+  getAllUsers(){
+    var userId = this.authService.GetUser().id;
+    return this.http.get(`${this.BaseURI}/User/${userId}/all`)
+  }
+  deleteUser(selectedId: number){
+    console.log(selectedId);
+    var id = this.authService.GetUser().id;
+    return this.http.post(`${this.BaseURI}/User/${id}/delete`, selectedId);
   }
 }

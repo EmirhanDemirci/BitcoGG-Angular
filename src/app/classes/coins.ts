@@ -26,7 +26,7 @@
     }
 
     export class Quote {
-        usd: Usd;
+        usd: Usd = new Usd();
     }
 
     export class Coin {
@@ -40,10 +40,10 @@
         max_supply?: number;
         circulating_supply: number;
         total_supply: number;
-        platform: Platform;
+        platform: Platform = new Platform();
         cmc_rank: number;
         last_updated: Date;
-        quote: Quote;
+        quote: Quote = new Quote();
     }
 
     export class RootObject {
