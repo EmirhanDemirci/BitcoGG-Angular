@@ -21,16 +21,31 @@
     </div>
   </nav>
 
+  <!-- <div class="container">
+    <div class="row">
+      <div class="col s8 offset-2">
+        <div class="card-panel teal lighten-2">
+          <h4 class="center white-text">Image Library</h4>
+        </div>
+        <form name="fileToUpload" #ImageForm=ngForm (ngSubmit)="onSubmit(Image)">
+          <img [src]="imageUrl"  style="width:250px;height:200px">
+          <input name="fileToUpload" type="file" #Image accept="image/*" (change)="handleFileInput($event.target.files)">
+          <button type="submit" class="btn-large btn-submit" [disabled]="Image.value=='' || !ImageForm.valid">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div> -->
+
 <div class="container emp-profile">
     <form method="post">
         <div class="row">
             <div class="col-md-4">
                 <div class="profile-img">
-                    <img src="../../assets/img/ProfilePage.png"/>
-                    <div class="file btn btn-lg btn-primary">
-                        Change Photo
-                        <input type="file" name="file"/>
-                    </div>
+                    <form name="fileToUpload" #ImageForm=ngForm (ngSubmit)="onSubmit(Image)">
+                        <img [src]="imageUrl"  style="width:250px;height:200px">
+                        <input name="fileToUpload" type="file" #Image accept="image/*" (change)="handleFileInput($event.target.files)">
+                        <button type="submit" class="btn-large btn-submit" [disabled]="Image.value=='' || !ImageForm.valid">Submit</button>
+                      </form>
                 </div>
             </div>
             <div class="col-md-6">

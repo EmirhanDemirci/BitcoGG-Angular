@@ -22,8 +22,6 @@ export class AdminComponent implements OnInit {
         console.log(err);
       }
     )
-    // this.userService.fill();
-    // console.log(this.userService);
   }
 
    deleteUser(userId: number){
@@ -36,5 +34,4 @@ export class AdminComponent implements OnInit {
       }
     )
   }
-
 }

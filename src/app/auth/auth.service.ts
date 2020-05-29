@@ -8,6 +8,7 @@ export class AuthService {
 
   constructor() { }
 
+  //Admin function
   IsAdmin(): boolean {
     var token = localStorage.getItem("token");
     const jwtHelper = new JwtHelperService();
@@ -20,7 +21,7 @@ export class AuthService {
       return false;
     }
   }
-
+  
   GetUser() {
     return JSON.parse(localStorage.getItem("user"));
   }
