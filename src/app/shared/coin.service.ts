@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core"
 import { HttpClient } from '@angular/common/http';
-import { RootObject } from '../classes/Coins';
+import { RootObject, Article } from '../classes/Coins';
 import { Observable } from 'rxjs';
 
  @Injectable({
@@ -15,6 +15,10 @@ import { Observable } from 'rxjs';
      getCryptos(): Observable<any> {
          console.log(this._http.get<RootObject[]>(this.cryptoUrl))
          return this._http.get(this.cryptoUrl)
+     }
+     getCryptoNews(): Observable<any> {
+        console.log(this._http.get<Article[]>(this.cryptoUrl + '/News'))
+         return this._http.get(this.cryptoUrl + '/News')
      }
  }
 

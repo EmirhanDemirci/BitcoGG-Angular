@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <img src="../../assets/img/bitcoin-shield-2-571822.png" class="navLogo"> 
+    <img src="../../../assets/img/bitcoin-shield-2-571822.png" class="navLogo"> 
     <a href="" class="navbar-brand text-white">BitcoGG</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -8,13 +8,16 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="home">Home </a>
+          <a class="nav-link" href="#">Home </a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="crypto-news">News </a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="profile">Profile <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="profile">Profile </a>
         </li>
         <li class="nav-item">
-            <a *ngIf="userDetails.isAdmin == 1" class="nav-link enabled" href="admin">Admin</a>
+          <a *ngIf="isAdmin" class="nav-link" href="admin">Admin</a>
         </li>
       </ul>
         <button class="btn btn-danger my-2 my-sm-0" (click)="onLogout()">Logout</button>
@@ -39,15 +42,14 @@
 <div class="container emp-profile">
     <form method="post">
         <div class="row">
-            <div class="col-md-4">
-                <div class="profile-img">
-                    <form name="fileToUpload" #ImageForm=ngForm (ngSubmit)="onSubmit(Image)">
-                        <img [src]="imageUrl"  style="width:250px;height:200px">
-                        <input name="fileToUpload" type="file" #Image accept="image/*" (change)="handleFileInput($event.target.files)">
-                        <button type="submit" class="btn-large btn-submit" [disabled]="Image.value=='' || !ImageForm.valid">Submit</button>
-                      </form>
-                </div>
+            <div class="profile-img">
+                <form #imageForm=ngForm (ngSubmit)="OnSubmit(Image)">
+                    <img [src]="imageUrl"  style="width:250px;height:200px">
+                    <input type="file" #Image accept="image/*" (change)="handleFileInput($event.target.files)">
+                    <button type="submit" class="btn btn-danger" [disabled]="Image.value=='' || !imageForm.valid">Submit</button>
+                  </form>
             </div>
+
             <div class="col-md-6">
                 <div class="profile-head">
                             <h5>

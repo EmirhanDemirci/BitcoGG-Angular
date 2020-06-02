@@ -8,12 +8,14 @@ import { AuthGuard } from './auth/auth.guard';
 import { IsAdminGuard } from './auth/is-admin.guard';
 import { ProfileComponent } from './profile/profile.component';
 import { AdminComponent } from './admin/admin.component';
+import { CryptoNewsComponent } from './crypto-news/crypto-news.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/user/login', pathMatch: 'full' },
   { path: 'home', component:HomeComponent,canActivate:[AuthGuard]},
   { path: 'profile', component:ProfileComponent,canActivate:[AuthGuard]},
+  { path: 'crypto-news', component:CryptoNewsComponent,canActivate:[AuthGuard]},
   { path: 'admin', component:AdminComponent,canActivate:[IsAdminGuard]},
   { path: 'user', component: UserComponent,
     children: [

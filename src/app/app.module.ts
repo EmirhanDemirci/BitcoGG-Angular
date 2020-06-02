@@ -16,6 +16,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import { RootObject } from './classes/Coins';
 import { ProfileComponent } from './profile/profile.component';
 import { AdminComponent } from './admin/admin.component';
+import { CryptoNewsComponent } from './crypto-news/crypto-news.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { AdminComponent } from './admin/admin.component';
     LoginComponent,
     HomeComponent,
     ProfileComponent,
-    AdminComponent
+    AdminComponent,
+    CryptoNewsComponent
   ],
   imports: [
     BrowserModule,

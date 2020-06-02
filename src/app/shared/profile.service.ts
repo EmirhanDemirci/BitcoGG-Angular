@@ -1,0 +1,20 @@
+import { Injectable } from '@angular/core';
+import { ApiService } from '../shared/api.service';
+import { HttpClient } from '@angular/common/http';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ProfileService extends ApiService {
+
+  constructor(http: HttpClient) {
+    super('/profile', http);
+  }
+
+  postFile(fileToUpload: File) {
+    const endpoint = 'https://localhost:44378/api/file';
+    const formData: FormData = new FormData();
+    formData.append('Image', fileToUpload, fileToUpload.name);
+    return this.http.post(endpoint, formData);
+  }
+}

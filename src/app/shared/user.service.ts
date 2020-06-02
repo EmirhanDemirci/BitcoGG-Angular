@@ -64,7 +64,7 @@ export class UserService {
   }
   
   //Posting a profile image (Not working yet)
-  postFile(fileToUpload){
+  postFile(fileToUpload: File){
     var userId = this.authService.GetUser().id;
     const formData: FormData = new FormData();
     formData.append('fileToUpload', fileToUpload, fileToUpload.name)

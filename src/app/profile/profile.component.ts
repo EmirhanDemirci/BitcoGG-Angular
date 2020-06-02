@@ -14,11 +14,14 @@ export class ProfileComponent implements OnInit {
   userDetails;
   imageUrl: string = "/assets/img/ProfilePage.png";
   fileToUpload: File = null;
-  constructor(private userService:UserService, private router: Router, private authService: AuthService, http: HttpClient) {}
+  isAdmin;
+
+  constructor(private userService:UserService, private router: Router, private authService: AuthService, http: HttpClient,) {}
 
   ngOnInit(): void {
 
    this.userDetails = this.authService.GetUser();
+   this.isAdmin = this.authService.IsAdmin();
   }
 
   onLogout(){
@@ -28,8 +31,10 @@ export class ProfileComponent implements OnInit {
     this.router.navigate(['/user/login'])
   }
 
-  handleFileInput(file: FileList){
+  handleFileInput(file: FileList) {
     this.fileToUpload = file.item(0);
+
+    //Show image preview
     var reader = new FileReader();
     reader.onload = (event:any) => {
       this.imageUrl = event.target.result;
@@ -38,14 +43,13 @@ export class ProfileComponent implements OnInit {
   }
 
   //Note done yet
-  onSubmit(Image) {
-    console.log(this.fileToUpload);
+  OnSubmit(Image){
     this.userService.postFile(this.fileToUpload).subscribe(
       data =>{
-        console.log(data);
         console.log('done');
         Image.value = null;
+        this.imageUrl = "/assets/img/ProfilePage.png";
       }
     );
-  }
+   }
 }
