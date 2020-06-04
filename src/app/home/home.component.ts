@@ -9,7 +9,6 @@ import { coinService } from '../shared/coin.service';
 import * as CanvasJS from '../JS/canvasjs.min';
 import * as $ from "jquery";
 import { AuthService } from '../auth/auth.service';
-// import { coinService } from '../shared/coin.service';
 
 
 @Component({
