@@ -1,8 +1,32 @@
-<nav class="navbar navbar-dark bg-dark">
-    <img src="../../../assets/img/bitcoin-shield-2-571822.png" class="navLogo"> 
-    <a href="" class="navbar-brand text-white">Currencies</a>
-    <button class="btn btn-danger my-2 my-sm-0" (click)="onLogout()">Logout</button>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <img src="../../../assets/img/bitcoin-shield-2-571822.png" class="navLogo"> 
+  <a href="" class="navbar-brand text-white">BitcoGG</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Home </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="crypto-news">News </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="profile">Profile </a>
+      </li>
+      <li class="nav-item">
+        <a *ngIf="isAdmin" class="nav-link" href="admin">Admin</a>
+      </li>
+    </ul>
+      <button class="btn btn-danger my-2 my-sm-0" (click)="onLogout()">Logout</button>
+  </div>
 </nav>
+
+
+
+<div class="Coins">
 <table class="table table-striped table-dark table-bordered">
     <tr>
         <th>#</th>
@@ -12,6 +36,7 @@
         <th>Volume 24h</th>
         <th>Circulating supply</th>
         <th>Change 24h</th>
+        <th>View</th>
     </tr>
     <tr *ngFor="let coin of Data$">
         <td>{{coin.cmc_rank}}</td>
@@ -21,15 +46,37 @@
         <td>{{coin.quote.usd.volume_24h}}</td>
         <td>{{coin.circulating_supply}}</td>
         <td>{{coin.quote.usd.percent_change_24h}}</td>
+        <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#chartModal" (click)="getCoin(coin)" (click)="getChart()">View</button></td>
     </tr>
-
 </table>
-<!-- Get User Data -->
 
-<!-- <div class="card m-5" style="width: 18rem" *ngIf="userDetails">
-<ul class="list-group">
-<li class="list-group-item"><strong>Usename : </strong>{{userDetails.userName}}</li>
-<li class="list-group-item"><strong>fullName : </strong>{{userDetails.fullName}}</li>
-<li class="list-group-item"><strong>Email : </strong>{{userDetails.email}}</li>
-</ul>
-</div> -->
+<!-- Modal -->
+<div class="modal fade" id="chartModal" tabindex="-1" role="dialog" aria-labelledby="chartModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="chartModalLabel">{{Coin.name}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- Generate Chart -->
+          <div id="chartContainer" style="height: 250px; width: auto;"></div>
+          <br>
+          <!-- Round to 2 decimals -->
+          <b>Price:</b> {{Coin.quote.usd.price}} <br>
+          <!-- Round to 0 decimals -->
+          <b>Market Cap:</b> {{Coin.quote.usd.market_cap}} <br>
+          <!-- Change color to red or green -->
+          <b>Change 24Hr:</b> {{Coin.quote.usd.percent_change_24h}}%
+        </div>
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Add to wallet</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

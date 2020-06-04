@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <img src="../../../assets/img/bitcoin-shield-2-571822.png" class="navLogo">
+    <a href="" class="navbar-brand text-white">BitcoGG</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Home </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="crypto-news">News </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="profile">Profile </a>
+            </li>
+            <li class="nav-item">
+                <a *ngIf="isAdmin" class="nav-link" href="admin">Admin</a>
+            </li>
+        </ul>
+        <button class="btn btn-danger my-2 my-sm-0" (click)="onLogout()">Logout</button>
+    </div>
+</nav>
+
+<div class="Coins">
+    <table class="table table-striped table-dark table-bordered">
+        <tr>
+            <th>Author</th>
+            <th>Description</th>
+            <th>Images</th>
+        </tr>
+        <tr *ngFor="let article of Data">
+            <td>{{article.author}}</td>
+            <td>{{article.description}}</td>
+            <td>
+                <a href="{{article.url}}">
+                    <img class="media-object" src="{{article.urlToImage}}" style="width: 400px" height="250px">
+                </a>
+            </td>
+        </tr>
+    </table>
+</div>

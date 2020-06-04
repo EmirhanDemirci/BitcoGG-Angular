@@ -26,10 +26,10 @@
     }
 
     export class Quote {
-        usd: Usd;
+        usd: Usd = new Usd();
     }
 
-    export class Datum {
+    export class Coin {
         id: number;
         name: string;
         symbol: string;
@@ -40,14 +40,32 @@
         max_supply?: number;
         circulating_supply: number;
         total_supply: number;
-        platform: Platform;
+        platform: Platform = new Platform();
         cmc_rank: number;
         last_updated: Date;
-        quote: Quote;
+        quote: Quote = new Quote();
     }
 
     export class RootObject {
         status: Status;
-        data: Datum[];
+        data: Coin[];
     }
-
+    
+    export class CoinsNews {
+        status: string;
+        totalResults: number;
+        articles: Article[];
+    }
+    export class Article {
+        author: string;
+        title: string;
+        description: string;
+        url: string;
+        urlToImage: string;
+        publishedAt: Date;
+        source: Source;
+    }
+    export class Source {
+        id: string;
+        name: string;
+    }

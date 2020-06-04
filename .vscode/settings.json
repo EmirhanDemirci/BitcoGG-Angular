@@ -1,0 +1,4 @@
+{
+    "appService.deploySubpath": ".",
+    "appService.defaultWebAppToDeploy": "/subscriptions/1d2cc095-c19a-4428-a158-ce1824fc2841/resourceGroups/EmirhanDemirci/providers/Microsoft.Web/sites/BitcoGG"
+}
