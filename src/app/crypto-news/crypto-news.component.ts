@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { coinService } from '../shared/coin.service';
-import { CoinsNews, Article } from '../classes/Coins';
+import { Article } from "../models/Article";
+import { CoinsNews } from "../models/CoinsNews";
 import { AuthService } from '../auth/auth.service';
 import { Router } from '@angular/router';
 
