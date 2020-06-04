@@ -13,7 +13,6 @@ import { UserService } from './shared/user.service';
 import { LoginComponent } from './user/login/login.component';
 import { HomeComponent } from './home/home.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
-import { RootObject } from './classes/Coins';
 import { ProfileComponent } from './profile/profile.component';
 import { AdminComponent } from './admin/admin.component';
 import { CryptoNewsComponent } from './crypto-news/crypto-news.component';
@@ -40,7 +39,7 @@ import { CryptoNewsComponent } from './crypto-news/crypto-news.component';
     }),
     FormsModule
   ],
-  providers: [UserService, RootObject, {
+  providers: [UserService, {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true
