@@ -8,7 +8,7 @@ import { RootObject, Article } from '../classes/Coins';
  })
  export class coinService 
  {
-     cryptoUrl = 'https://localhost:44378/api/coin';
+     cryptoUrl = 'https://bitcoggapi.azurewebsites.net/api/coin';
         
      constructor(private _http: HttpClient) { }
 

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
-  readonly BaseURI = 'https://localhost:44378/api';
+  readonly BaseURI = 'https://bitcoggapi.azurewebsites.net/api';
   protected url = this.BaseURI;
 
   constructor(@Inject(String) private location, protected http: HttpClient) {

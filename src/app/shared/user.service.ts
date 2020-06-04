@@ -8,8 +8,7 @@ import { AuthService } from '../auth/auth.service';
 export class UserService {
 
   constructor(private fb: FormBuilder, private http: HttpClient, private authService: AuthService) { }
-  readonly BaseURI = 'https://localhost:44378/api';
-
+  readonly BaseURI = 'https://bitcoggapi.azurewebsites.net/api';
   formModel = this.fb.group({
     UserName: ['', Validators.required],
     Email: ['', Validators.email],

@@ -12,7 +12,7 @@ export class ProfileService extends ApiService {
   }
 
   postFile(fileToUpload: File) {
-    const endpoint = 'https://localhost:44378/api/file';
+    const endpoint = 'https://bitcoggapi.azurewebsites.net/api/file';
     const formData: FormData = new FormData();
     formData.append('Image', fileToUpload, fileToUpload.name);
     return this.http.post(endpoint, formData);
