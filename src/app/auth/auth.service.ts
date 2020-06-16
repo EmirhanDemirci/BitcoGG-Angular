@@ -25,4 +25,11 @@ export class AuthService {
   GetUser() {
     return JSON.parse(localStorage.getItem("user"));
   }
+  GetWallet(){
+    var token = localStorage.getItem("token");
+    const jwtHelper = new JwtHelperService();
+    const decodedToken = jwtHelper.decodeToken(token);
+    console.log(decodedToken);
+    return JSON.parse(localStorage.getItem("wallet"))
+  }
 }

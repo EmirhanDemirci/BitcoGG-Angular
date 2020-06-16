@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from '../auth/auth.service';
+import { PurchasedCoin } from '../models/PurhcasedCoin';
+import { Wallet } from '../models/Wallet';
+import { from } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -9,6 +12,8 @@ export class UserService {
 
   constructor(private fb: FormBuilder, private http: HttpClient, private authService: AuthService) { }
   readonly BaseURI = 'https://bitcoggapi.azurewebsites.net/api';
+  readonly LocalURI = 'https://localhost:44378/api';
+
   formModel = this.fb.group({
     UserName: ['', Validators.required],
     Email: ['', Validators.email],
@@ -19,7 +24,6 @@ export class UserService {
       ConfirmPassword: ['', Validators.required]
     }, { validator: this.comparePasswords })
   });
-
   //A function to compare passwords (front-end)
   comparePasswords(fb: FormGroup) {
     const confirmPasswordCtrl = fb.get('ConfirmPassword');
@@ -41,32 +45,59 @@ export class UserService {
       Lastname: this.formModel.value.LastName,
       Password: this.formModel.value.Passwords.Password,
     };
-    return this.http.post(this.BaseURI + '/User/Register', body, { observe: 'response' });
+    return this.http.post(this.LocalURI + '/User/Register', body, { observe: 'response' });
   }
 
   //A function to login the user
-  login(formData){
-    return this.http.post(this.BaseURI + '/User/Login', formData);
+  login(formData) {
+    return this.http.post(this.LocalURI + '/User/Login', formData);
   }
 
   //A function to get all the users before the admin can delete it
-  getAllUsers(){
+  getAllUsers() {
     var userId = this.authService.GetUser().id;
-    return this.http.get(`${this.BaseURI}/User/${userId}/all`)
+    return this.http.get(`${this.LocalURI}/User/${userId}/all`)
   }
 
   //A function that can remove all users based on if the user is admin or not
-  deleteUser(selectedId: number){
+  deleteUser(selectedId: number) {
     console.log(selectedId);
     var id = this.authService.GetUser().id;
-    return this.http.post(`${this.BaseURI}/User/${id}/delete`, selectedId);
+    return this.http.post(`${this.LocalURI}/User/${id}/delete`, selectedId);
   }
-  
+
   //Posting a profile image (Not working yet)
-  postFile(fileToUpload: File){
+  postFile(fileToUpload: File) {
     var userId = this.authService.GetUser().id;
     const formData: FormData = new FormData();
     formData.append('fileToUpload', fileToUpload, fileToUpload.name)
-    return this.http.post(`${this.BaseURI}/File/upload/${userId}`, formData)
+    return this.http.post(`${this.LocalURI}/File/upload/${userId}`, formData)
+  }
+
+  createWallet(walletModel: FormGroup) {
+    var userId = this.authService.GetUser().id;
+    console.log(walletModel);
+    return this.http.post(`${this.LocalURI}/User/${userId}/CreateWallet`, walletModel.value, { observe: 'response' });
+  }
+  //Moet nog geimplenteerd worden
+  DeleteWallet(wallet: Wallet) {
+    var userId = this.authService.GetUser().id;
+    return this.http.post(`${this.LocalURI}/User/${userId}/DeleteWallet`, wallet);
+  }
+
+  PurchaseCoin(coinModel: FormGroup) {
+    var userId = this.authService.GetUser().id;
+    var walletId = this.authService.GetWallet();
+    console.log(walletId);
+    return this.http.post(`${this.LocalURI}/User/${userId}/PurchaseCoin`, coinModel.value, { observe: 'response'});
+  }
+  GetPurchasedCoin() {
+    var userId = this.authService.GetUser().id;
+    return this.http.get(`${this.LocalURI}/User/${userId}/GetUserWallet`)
+  }
+  UpdatePurchasedCoin(formData) {
+    var userId = this.authService.GetUser().id;
+    
+    return this.http.post(`${this.LocalURI}/User/${userId}/UpdatePurchasedCoin`, formData, { observe: 'response'});
   }
 }

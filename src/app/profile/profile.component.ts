@@ -14,23 +14,13 @@ export class ProfileComponent implements OnInit {
   userDetails;
   imageUrl: string = "/assets/img/ProfilePage.png";
   fileToUpload: File = null;
-  isAdmin;
 
   constructor(private userService:UserService, private router: Router, private authService: AuthService, http: HttpClient,) {}
 
   ngOnInit(): void {
 
    this.userDetails = this.authService.GetUser();
-   this.isAdmin = this.authService.IsAdmin();
   }
-
-  onLogout(){
-    // Delete the token (Logout)
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    this.router.navigate(['/user/login'])
-  }
-
   handleFileInput(file: FileList) {
     this.fileToUpload = file.item(0);
 

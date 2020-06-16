@@ -13,9 +13,7 @@ import { Router } from '@angular/router';
 export class CryptoNewsComponent implements OnInit {
   Article: Article = new Article();
   Data: Article[] = [];
-  isAdmin;
   constructor(private router: Router, private coinService: coinService, private authService: AuthService) { }
-
 
   ngOnInit() {
 
@@ -29,12 +27,5 @@ export class CryptoNewsComponent implements OnInit {
         console.log(err);
       }
     );
-    this.isAdmin = this.authService.IsAdmin();
-  }
-  onLogout(){
-    // Delete the token (Logout)
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    this.router.navigate(['/user/login'])
   }
 }
