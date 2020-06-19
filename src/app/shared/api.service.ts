@@ -14,7 +14,7 @@ export class ApiService {
   constructor(@Inject(String) private location, protected http: HttpClient) {
     this.url = this.url + this.location;
   }
-
+  //CRUD operation
   getAll() {
     return this.http.get(this.url + '/get');
   }

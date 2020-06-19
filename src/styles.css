@@ -1,64 +1,68 @@
-body{
-    background-color: #280244;;
+body {
+    background-color: #280244;
+    ;
 }
-.LoginLogo{
+
+.LoginLogo {
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 50%;
 }
-.navLogo{
+
+.navLogo {
     display: block;
     width: 3%;
 }
-.Coins{
+
+.Coins {
     margin-top: 2%;
     margin-left: 2%;
     margin-right: 2%;
 }
 
-input.form-control,input.form-control:focus{
+input.form-control,
+input.form-control:focus {
     background-color: #FFFF;
     color: #280244;
     border: 1px solid #280244;
-
 }
 
-input.form-control:focus{
+input.form-control:focus {
     box-shadow: none;
 }
 
-button[type=submit].btn{
+button[type=submit].btn {
     border-radius: 20px;
     background-color: #280244;
     color: #fff;
 }
 
-div.form-group label:not(.text-danger){
+div.form-group label:not(.text-danger) {
     color: #280244;
     font-weight: 700;
 }
 
-div.form-group.required>label:first-child:after{
-    content:'*';
+div.form-group.required>label:first-child:after {
+    content: '*';
     color: #fff;
     padding-left: 5px;
 }
 
-#toast-container > div {
-    opacity:1;
+#toast-container>div {
+    opacity: 1;
 }
 
 .wrapper {
     display: flex;
     align-items: center;
-    flex-direction: column; 
+    flex-direction: column;
     justify-content: center;
     width: 100%;
     padding: 20px;
-  }
+}
 
-  .wrapped-div {
+.wrapped-div {
     -webkit-border-radius: 10px 10px 10px 10px;
     border-radius: 10px 10px 10px 10px;
     background: #3E3E3E;
@@ -67,62 +71,70 @@ div.form-group.required>label:first-child:after{
     max-width: 450px;
     position: relative;
     padding: 0px;
-    -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-  }
+    -webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+}
 
-  /* Tabs */
-.tab-header{
+
+/* Tabs */
+
+.tab-header {
     text-align: center;
 }
 
-  .tab-header h2.active {
+.tab-header h2.active {
     color: #fff;
     border-bottom: 4px solid #fff;
-  }
+}
 
-  .tab-header h2 {
+.tab-header h2 {
     text-align: center;
     font-size: 18px;
     font-weight: 600;
-    display:inline-block;
+    display: inline-block;
     padding: 30px 40px 10px 40px;
     cursor: pointer;
     color: #545d6a;
     border-bottom: 2px solid #545d6a;
-  }
+}
 
-  .tab-header h2:focus {
-      outline: none;
-  }
+.tab-header h2:focus {
+    outline: none;
+}
 
-  form{
-      margin: 0px 16px;
-  }
+form {
+    margin: 0px 16px;
+}
 
- div.form-group input.invalid{
-    border: 1px solid #dc3545; 
- }
- div.form-group label:first-child{
+div.form-group input.invalid {
+    border: 1px solid #dc3545;
+}
+
+div.form-group label:first-child {
     text-transform: uppercase;
     font-size: 0.9rem;
- }
-    
+}
+
+
 /* Profile Page css */
- .emp-profile{
+
+.emp-profile {
     padding: 3%;
     margin-top: 3%;
     margin-bottom: 3%;
     border-radius: 0.5rem;
     background: #fff;
 }
-.profile-img{
+
+.profile-img {
     text-align: center;
 }
-.profile-img img{
+
+.profile-img img {
     width: 70%;
     height: 100%;
 }
+
 .profile-img .file {
     position: relative;
     overflow: hidden;
@@ -133,19 +145,23 @@ div.form-group.required>label:first-child:after{
     font-size: 15px;
     background: #212529b8;
 }
+
 .profile-img .file input {
     position: absolute;
     opacity: 0;
     right: 0;
     top: 0;
 }
-.profile-head h5{
+
+.profile-head h5 {
     color: #333;
 }
-.profile-head h6{
+
+.profile-head h6 {
     color: #0062cc;
 }
-.profile-edit-btn{
+
+.profile-edit-btn {
     border: none;
     border-radius: 1.5rem;
     width: 70%;
@@ -154,53 +170,65 @@ div.form-group.required>label:first-child:after{
     color: #6c757d;
     cursor: pointer;
 }
-.proile-rating{
+
+.proile-rating {
     font-size: 12px;
     color: #818182;
     margin-top: 5%;
 }
-.proile-rating span{
+
+.proile-rating span {
     color: #495057;
     font-size: 15px;
     font-weight: 600;
 }
-.profile-head .nav-tabs{
-    margin-bottom:5%;
+
+.profile-head .nav-tabs {
+    margin-bottom: 5%;
 }
-.profile-head .nav-tabs .nav-link{
-    font-weight:600;
+
+.profile-head .nav-tabs .nav-link {
+    font-weight: 600;
     border: none;
 }
-.profile-head .nav-tabs .nav-link.active{
+
+.profile-head .nav-tabs .nav-link.active {
     border: none;
-    border-bottom:2px solid #0062cc;
+    border-bottom: 2px solid #0062cc;
 }
-.profile-work{
+
+.profile-work {
     padding: 14%;
     margin-top: -15%;
 }
-.profile-work p{
+
+.profile-work p {
     font-size: 12px;
     color: #818182;
     font-weight: 600;
     margin-top: 10%;
 }
-.profile-work a{
+
+.profile-work a {
     text-decoration: none;
     color: #495057;
     font-weight: 600;
     font-size: 14px;
 }
-.profile-work ul{
+
+.profile-work ul {
     list-style: none;
 }
-.profile-tab label{
+
+.profile-tab label {
     font-weight: 600;
 }
-.profile-tab p{
+
+.profile-tab p {
     font-weight: 600;
     color: #0062cc;
 }
-.tablebeast{
+
+.tablebeast {
     margin-top: 1%;
 }

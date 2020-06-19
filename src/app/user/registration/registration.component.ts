@@ -14,14 +14,14 @@ export class RegistrationComponent implements OnInit {
   ngOnInit(): void {
     this.service.formModel.reset();
   }
-
+  //Registers the users
   onSubmit() {
     this.service.register().subscribe(
       (res: any) => {
         if (res.status == 200) {
           this.service.formModel.reset();
           this.toastr.success('New user created', 'Registration successful');
-        } 
+        }
       },
       err => {
         this.toastr.error(err.error.message, 'Registration failed');

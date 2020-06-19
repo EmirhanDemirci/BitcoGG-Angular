@@ -9,7 +9,7 @@ import * as CanvasJS from '../JS/canvasjs.min';
 export class ChartComponent implements OnInit {
 
   constructor() { }
-
+  // Creating a Container (Hardcoded, no time left to render it with real data)
   ngOnInit(): void {
     var chart = new CanvasJS.Chart("chartContainer", {
       animationEnabled: true,
@@ -64,7 +64,7 @@ export class ChartComponent implements OnInit {
         }
         ]
       }]
-    }); 
+    });
     chart.render();
   }
 

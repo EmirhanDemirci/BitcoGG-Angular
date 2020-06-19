@@ -9,12 +9,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-  users:any[] = [];
-  constructor(private router: Router,private service:UserService) { }
+  users: any[] = [];
+  constructor(private router: Router, private service: UserService) { }
 
+  // Get all users
   ngOnInit() {
     this.service.getAllUsers().subscribe(
-      (res:any) => {
+      (res: any) => {
         this.users = res;
         console.log(res);
       },
@@ -23,10 +24,10 @@ export class AdminComponent implements OnInit {
       }
     )
   }
-
-   deleteUser(userId: number){
+  // Delete user
+  deleteUser(userId: number) {
     this.service.deleteUser(userId).subscribe(
-      (res:any) => {
+      (res: any) => {
         console.log(res);
       },
       err => {

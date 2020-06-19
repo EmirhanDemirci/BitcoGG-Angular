@@ -12,9 +12,8 @@
             <td>{{coin.coinId}}</td>
             <td>{{coin.name}}</td>
             <td>€ {{coin.price}}</td>
-            <td><input value="{{coin.quantity}}" type="number"></td>
+            <td>{{coin.quantity}}</td>
             <td>{{coin.totalValue}}</td>
-            <td><button (click)="UpdatePurchasedCoin(coin.coinId)" type="submit" class="btn btn-danger">Update!</button></td>
         </tr>
 
     </table>

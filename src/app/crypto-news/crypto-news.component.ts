@@ -14,18 +14,17 @@ export class CryptoNewsComponent implements OnInit {
   Article: Article = new Article();
   Data: Article[] = [];
   constructor(private router: Router, private coinService: coinService, private authService: AuthService) { }
-
+  // Loads the crypto news in the page 
   ngOnInit() {
-
     this.coinService.getCryptoNews()
-    .subscribe(
-      (res: CoinsNews) =>{
-        this.Data = res.articles;
-        console.log(res);
-      },
-      err => {
-        console.log(err);
-      }
-    );
+      .subscribe(
+        (res: CoinsNews) => {
+          this.Data = res.articles;
+          console.log(res);
+        },
+        err => {
+          console.log(err);
+        }
+      );
   }
 }

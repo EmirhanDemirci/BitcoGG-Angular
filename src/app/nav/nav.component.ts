@@ -12,14 +12,15 @@ import { Wallet } from '../models/Wallet';
 export class NavComponent implements OnInit {
   wallet: Wallet = new Wallet();
   isAdmin;
+  hasWallet;
   constructor(private router: Router, private authService: AuthService, private accountService: UserService) { }
-
+  //Saves the admin / wallet in a variable to use it on the view
   ngOnInit(): void {
     this.isAdmin = this.authService.IsAdmin();
+    this.hasWallet = this.authService.GetWallet();
   }
-
-  onLogout(){
-    // Delete the token (Logout)
+  // Makes sure when the user logs out it deletes all the localstorages
+  onLogout() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     this.router.navigate(['/user/login'])

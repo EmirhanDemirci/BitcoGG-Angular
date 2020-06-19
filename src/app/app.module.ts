@@ -46,14 +46,14 @@ import { ChartComponent } from './chart/chart.component';
     FormsModule
   ],
   exports: [
-  ChartComponent
+    ChartComponent
   ],
   providers: [
     {
-    provide: HTTP_INTERCEPTORS,
-    useClass: AuthInterceptor,
-    multi: true
-  }],
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
