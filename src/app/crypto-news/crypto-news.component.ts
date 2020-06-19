@@ -13,28 +13,18 @@ import { Router } from '@angular/router';
 export class CryptoNewsComponent implements OnInit {
   Article: Article = new Article();
   Data: Article[] = [];
-  isAdmin;
   constructor(private router: Router, private coinService: coinService, private authService: AuthService) { }
-
-
+  // Loads the crypto news in the page 
   ngOnInit() {
-
     this.coinService.getCryptoNews()
-    .subscribe(
-      (res: CoinsNews) =>{
-        this.Data = res.articles;
-        console.log(res);
-      },
-      err => {
-        console.log(err);
-      }
-    );
-    this.isAdmin = this.authService.IsAdmin();
-  }
-  onLogout(){
-    // Delete the token (Logout)
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    this.router.navigate(['/user/login'])
+      .subscribe(
+        (res: CoinsNews) => {
+          this.Data = res.articles;
+          console.log(res);
+        },
+        err => {
+          console.log(err);
+        }
+      );
   }
 }

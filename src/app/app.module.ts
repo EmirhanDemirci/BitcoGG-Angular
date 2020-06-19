@@ -16,6 +16,9 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import { ProfileComponent } from './profile/profile.component';
 import { AdminComponent } from './admin/admin.component';
 import { CryptoNewsComponent } from './crypto-news/crypto-news.component';
+import { NavComponent } from './nav/nav.component';
+import { WalletComponent } from './wallet/wallet.component';
+import { ChartComponent } from './chart/chart.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { CryptoNewsComponent } from './crypto-news/crypto-news.component';
     HomeComponent,
     ProfileComponent,
     AdminComponent,
-    CryptoNewsComponent
+    CryptoNewsComponent,
+    NavComponent,
+    WalletComponent,
+    ChartComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,11 +45,15 @@ import { CryptoNewsComponent } from './crypto-news/crypto-news.component';
     }),
     FormsModule
   ],
-  providers: [UserService, {
-    provide: HTTP_INTERCEPTORS,
-    useClass: AuthInterceptor,
-    multi: true
-  }],
+  exports: [
+    ChartComponent
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

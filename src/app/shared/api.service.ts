@@ -8,12 +8,13 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
   readonly BaseURI = 'https://bitcoggapi.azurewebsites.net/api';
-  protected url = this.BaseURI;
+  readonly LocalURI = 'https://localhost:44378/api';
+  protected url = this.LocalURI;
 
   constructor(@Inject(String) private location, protected http: HttpClient) {
     this.url = this.url + this.location;
   }
-
+  //CRUD operation
   getAll() {
     return this.http.get(this.url + '/get');
   }

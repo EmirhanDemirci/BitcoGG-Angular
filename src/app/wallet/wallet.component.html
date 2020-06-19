@@ -1,0 +1,20 @@
+<div class="Coins">
+    <table class="table table-striped table-dark table-bordered">
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>TotalValue</th>
+        </tr>
+
+        <tr *ngFor="let coin of purchasedCoins">
+            <td>{{coin.coinId}}</td>
+            <td>{{coin.name}}</td>
+            <td>€ {{coin.price}}</td>
+            <td>{{coin.quantity}}</td>
+            <td>{{coin.totalValue}}</td>
+        </tr>
+
+    </table>
+</div>
