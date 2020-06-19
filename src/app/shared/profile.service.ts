@@ -10,7 +10,7 @@ export class ProfileService extends ApiService {
   constructor(http: HttpClient) {
     super('/profile', http);
   }
-
+  //Post image to api (Not working)
   postFile(fileToUpload: File) {
     const endpoint = 'https://bitcoggapi.azurewebsites.net/api/file';
     const formData: FormData = new FormData();

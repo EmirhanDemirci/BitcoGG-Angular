@@ -38,24 +38,23 @@ export class HomeComponent implements OnInit {
   walletModel = this.fb.group({
     Name: ['', Validators.required]
   });
-  
+
 
   constructor(private fb: FormBuilder, private router: Router, public service: UserService, private coinService: coinService, private httpclient: HttpClient, private authService: AuthService, private toastr: ToastrService) { }
-
+  // Before the page loads it makes sure to get all the cryptos and reset the formModel
   ngOnInit() {
     this.service.formModel.reset();
     this.coinService.getCryptos()
       .subscribe(
         (res: RootObject) => {
           this.Data$ = res.data;
-          console.log(res);
         },
         err => {
           console.log(err);
         }
       );
   }
-
+  // A function to create a wallet
   onSubmit() {
     console.log(this.walletModel.value);
     this.service.createWallet(this.walletModel).subscribe(
@@ -66,11 +65,11 @@ export class HomeComponent implements OnInit {
         }
       },
       err => {
-        this.toastr.error(err.error.message, 'Registration failed');
-        console.log(err);
+        this.toastr.error(err.error.message, 'Already exists');
       }
     );
   }
+  // A function to purchase coins
   purchaseCoin() {
     console.log(this.coinModel.value);
     this.service.PurchaseCoin(this.coinModel).subscribe(
@@ -81,12 +80,11 @@ export class HomeComponent implements OnInit {
         }
       },
       err => {
-        console.log(err);
         this.toastr.error(err.error.message, 'Purhcase failed');
       }
     );
   }
-
+  // A function to get the specific coin
   getCoin(coin: Coin) {
     this.Coin = coin;
     console.log(this.Coin);
@@ -96,10 +94,6 @@ export class HomeComponent implements OnInit {
       Quantity: [0, Validators.required],
       Price: [(Math.round(this.Coin.quote.usd.price * 100) / 100).toFixed(2)]
     });
-    console.log(coin.quote.usd.price)
-  }
-  getChart() {
-    
   }
 }
 

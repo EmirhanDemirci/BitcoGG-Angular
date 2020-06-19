@@ -1,121 +1,108 @@
 <div class="Coins">
-  <div id="target" (click)="getChart()">
-    Click here
-  </div>
-  <table class="table table-striped table-dark table-bordered">
-    <tr>
-      <th>#</th>
-      <th>Name</th>
-      <th>Market Cap</th>
-      <th>Price</th>
-      <th>Volume 24h</th>
-      <th>Circulating supply</th>
-      <th>Change 24h</th>
-      <th>View</th>
-    </tr>
-    <tr *ngFor="let coin of Data$">
-      <td>{{coin.cmc_rank}}</td>
-      <td>{{coin.name}}</td>
-      <td>{{coin.quote.usd.market_cap}}</td>
-      <td>{{coin.quote.usd.price}}</td>
-      <td>{{coin.quote.usd.volume_24h}}</td>
-      <td>{{coin.circulating_supply}}</td>
-      <td>{{coin.quote.usd.percent_change_24h}}</td>
-      <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#chartModal"
-          (click)="getCoin(coin)">View</button></td>
-    </tr>
-  </table>
+    <div id="target">
+        Click here
+    </div>
+    <table class="table table-striped table-dark table-bordered">
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Market Cap</th>
+            <th>Price</th>
+            <th>Volume 24h</th>
+            <th>Circulating supply</th>
+            <th>Change 24h</th>
+            <th>View</th>
+        </tr>
+        <tr *ngFor="let coin of Data$">
+            <td>{{coin.cmc_rank}}</td>
+            <td>{{coin.name}}</td>
+            <td>{{coin.quote.usd.market_cap}}</td>
+            <td>{{coin.quote.usd.price}}</td>
+            <td>{{coin.quote.usd.volume_24h}}</td>
+            <td>{{coin.circulating_supply}}</td>
+            <td>{{coin.quote.usd.percent_change_24h}}</td>
+            <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#chartModal" (click)="getCoin(coin)">View</button></td>
+        </tr>
+    </table>
 
-  <!-- Modal -->
-  <div class="modal fade" id="chartModal" tabindex="-1" role="dialog" aria-labelledby="chartModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="chartModalLabel">{{Coin.name}}</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <!-- Modal -->
+    <div class="modal fade" id="chartModal" tabindex="-1" role="dialog" aria-labelledby="chartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="chartModalLabel">{{Coin.name}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-        </div>
-        <div class="modal-body">
-          <!-- Generate Chart -->
-          <div id="reload" style="position: relative; height:40vh; width: 75vh;">
-            <app-chart></app-chart>
-          </div>
-          <br>
-          <!-- Round to 2 decimals -->
-          <b>Price:</b> {{Coin.quote.usd.price}} <br>
-          <!-- Round to 0 decimals -->
-          <b>Market Cap:</b> {{Coin.quote.usd.market_cap}} <br>
-          <!-- Change color to red or green -->
-          <b>Change 24Hr:</b> {{Coin.quote.usd.percent_change_24h}}%
-        </div>
+                </div>
+                <div class="modal-body">
+                    <!-- Generate Chart -->
+                    <div id="reload" style="position: relative; height:40vh; width: 75vh;">
+                        <app-chart></app-chart>
+                    </div>
+                    <br>
+                    <!-- Round to 2 decimals -->
+                    <b>Price:</b> {{Coin.quote.usd.price}} <br>
+                    <!-- Round to 0 decimals -->
+                    <b>Market Cap:</b> {{Coin.quote.usd.market_cap}} <br>
+                    <!-- Change color to red or green -->
+                    <b>Change 24Hr:</b> {{Coin.quote.usd.percent_change_24h}}%
+                </div>
 
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" data-toggle="modal" data-target="#purchaseModal" class="btn btn-primary">Add to
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" data-toggle="modal" data-target="#purchaseModal" class="btn btn-primary">Add to
             wallet</button>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 
-  <!-- Create your wallet -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <!-- Create your wallet -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-        </div>
-        <div class="modal-body">
-          <form [formGroup]="walletModel" autocomplete="off" (submit)="onSubmit()">
-            <div class="form-group required">
-              <label>Name your wallet</label>
-              <input class="form-control" formControlName="Name" type="text">
-              <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="walletModel" autocomplete="off" (submit)="onSubmit()">
+                        <div class="form-group required">
+                            <label>Name your wallet</label>
+                            <input class="form-control" formControlName="Name" type="text">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-          </form>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
     </div>
-  </div>
 
-  <!-- Purchase your coins -->
-  <div class="modal fade" id="purchaseModal" tabindex="-1" role="dialog" aria-labelledby="purchaseModal"
-    aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="purchaseModal">{{Coin.name}}</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <!-- Purchase your coins -->
+    <div class="modal fade" id="purchaseModal" tabindex="-1" role="dialog" aria-labelledby="purchaseModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="purchaseModal">{{Coin.name}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-        </div>
-        <div class="modal-body">
-          <form [formGroup]="coinModel" autocomplete="off" (submit)="purchaseCoin()">
-            <div class="form-group required">
-              <label>Amount:</label>
-              <input class="form-control" formControlName="Name" type="text" hidden />
-              <input class="form-control" formControlName="Price" type="number" hidden />
-              <input class="form-control" formControlName="Quantity" type="number" value="1" min="0" max="50"
-                step="1" />
-              <button type="submit" class="btn btn-primary">Purchase</button>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="coinModel" autocomplete="off" (submit)="purchaseCoin()">
+                        <div class="form-group required">
+                            <label>Amount:</label>
+                            <input class="form-control" formControlName="Name" type="text" hidden />
+                            <input class="form-control" formControlName="Price" type="number" hidden />
+                            <input class="form-control" formControlName="Quantity" type="number" value="1" min="0" max="50" step="1" />
+                            <button type="submit" class="btn btn-primary">Purchase</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-          </form>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
     </div>
-  </div>
 </div>
