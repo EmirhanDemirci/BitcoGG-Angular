@@ -15,13 +15,13 @@ import { RootObject } from "../models/RootObject";
      constructor(private _http: HttpClient) { }
     //Get the cryptos from api
      getCryptos(): Observable<any> {
-         console.log(this._http.get<RootObject[]>(this.localURI))
-         return this._http.get(this.localURI)
+         console.log(this._http.get<RootObject[]>(this.cryptoUrl))
+         return this._http.get(this.cryptoUrl)
      }
      //Get the crypto news from api
      getCryptoNews(): Observable<any> {
-        console.log(this._http.get<Article[]>(this.localURI + '/News'))
-         return this._http.get(this.localURI + '/News')
+        console.log(this._http.get<Article[]>(this.cryptoUrl + '/News'))
+         return this._http.get(this.cryptoUrl + '/News')
      }
  }
 

@@ -46,25 +46,25 @@ export class UserService {
       Lastname: this.formModel.value.LastName,
       Password: this.formModel.value.Passwords.Password,
     };
-    return this.http.post(this.LocalURI + '/User/Register', body, { observe: 'response' });
+    return this.http.post(this.BaseURI + '/User/Register', body, { observe: 'response' });
   }
 
   // A function to login the user
   login(formData) {
-    return this.http.post(this.LocalURI + '/User/Login', formData);
+    return this.http.post(this.BaseURI + '/User/Login', formData);
   }
 
   // A function to get all the users before the admin can delete it
   getAllUsers() {
     var userId = this.authService.GetUser().id;
-    return this.http.get(`${this.LocalURI}/User/${userId}/all`)
+    return this.http.get(`${this.BaseURI}/User/${userId}/all`)
   }
 
   // A function that can remove all users based on if the user is admin or not
   deleteUser(selectedId: number) {
     console.log(selectedId);
     var id = this.authService.GetUser().id;
-    return this.http.post(`${this.LocalURI}/User/${id}/delete`, selectedId);
+    return this.http.post(`${this.BaseURI}/User/${id}/delete`, selectedId);
   }
 
   // Posting a profile image (Not working)
@@ -72,34 +72,34 @@ export class UserService {
     var userId = this.authService.GetUser().id;
     const formData: FormData = new FormData();
     formData.append('fileToUpload', fileToUpload, fileToUpload.name)
-    return this.http.post(`${this.LocalURI}/File/upload/${userId}`, formData)
+    return this.http.post(`${this.BaseURI}/File/upload/${userId}`, formData)
   }
   // Create a wallet
   createWallet(walletModel: FormGroup) {
     var userId = this.authService.GetUser().id;
     console.log(walletModel);
-    return this.http.post(`${this.LocalURI}/User/${userId}/CreateWallet`, walletModel.value, { observe: 'response' });
+    return this.http.post(`${this.BaseURI}/User/${userId}/CreateWallet`, walletModel.value, { observe: 'response' });
   }
   // Delete the wallet (Not working)
   DeleteWallet(wallet: Wallet) {
     var userId = this.authService.GetUser().id;
-    return this.http.post(`${this.LocalURI}/User/${userId}/DeleteWallet`, wallet);
+    return this.http.post(`${this.BaseURI}/User/${userId}/DeleteWallet`, wallet);
   }
   // Purhcase a coin
   PurchaseCoin(coinModel: FormGroup) {
     var userId = this.authService.GetUser().id;
     var walletId = this.authService.GetWallet();
     console.log(walletId);
-    return this.http.post(`${this.LocalURI}/User/${userId}/PurchaseCoin`, coinModel.value, { observe: 'response' });
+    return this.http.post(`${this.BaseURI}/User/${userId}/PurchaseCoin`, coinModel.value, { observe: 'response' });
   }
   // Get all the purchased coins
   GetPurchasedCoin() {
     var userId = this.authService.GetUser().id;
-    return this.http.get(`${this.LocalURI}/User/${userId}/GetUserWallet`)
+    return this.http.get(`${this.BaseURI}/User/${userId}/GetUserWallet`)
   }
   // Update all the purchased coins (Not working)
   UpdatePurchasedCoin(formData) {
     var userId = this.authService.GetUser().id;
-    return this.http.post(`${this.LocalURI}/User/${userId}/UpdatePurchasedCoin`, formData, { observe: 'response' });
+    return this.http.post(`${this.BaseURI}/User/${userId}/UpdatePurchasedCoin`, formData, { observe: 'response' });
   }
 }
